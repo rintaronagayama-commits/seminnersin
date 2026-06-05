@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TikTok Shop LIVE 実践セミナー｜見学・体験できる少人数制セミナー</title>
+  <meta name="description" content="TikTok Shop LIVEを実際に見て・体験できる少人数制セミナー。商品紹介、コメント対応、声のみLIVE体験、自分に合う商品相談ができます。">
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --ink: #121318;
+      --muted: #606575;
+      --line: rgba(255, 255, 255, .12);
+      --cyan: #00f2ea;
+      --pink: #ff0050;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .28);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(0, 242, 234, .14), transparent 32rem),
+        radial-gradient(circle at 88% 4%, rgba(255, 0, 80, .14), transparent 30rem),
+        linear-gradient(180deg, #050505 0%, #101014 48%, #050505 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(100% - 40px, 1080px);
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 5, 5, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: -4px 0 0 var(--cyan), 4px 0 0 var(--pink);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .nav-note {
+      color: rgba(255, 255, 255, .72);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 76px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(300px, .94fr);
+      align-items: center;
+      gap: 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .06);
+      color: rgba(255, 255, 255, .86);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--cyan), var(--pink));
+      box-shadow: 0 0 18px rgba(0, 242, 234, .45);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(34px, 6.8vw, 68px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 .accent {
+      background: linear-gradient(90deg, var(--cyan), #fff 48%, var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin-bottom: 18px;
+      color: rgba(255, 255, 255, .84);
+      font-size: clamp(16px, 2.6vw, 20px);
+    }
+
+    .hero-safe {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 2px 0 22px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .hero-safe svg,
+    .section-icon svg,
+    .card-icon svg,
+    .mini-icon svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .line-guide {
+      display: grid;
+      gap: 8px;
+      max-width: 650px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .08);
+      box-shadow: 0 0 0 1px rgba(0, 242, 234, .08) inset;
+    }
+
+    .line-guide strong {
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .line-guide span {
+      color: rgba(255, 255, 255, .74);
+      font-size: 13px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03)),
+        #111116;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 468px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .visual-panel {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 28px;
+      width: auto;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .94);
+      color: var(--ink);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(10px);
+    }
+
+    .visual-panel h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .visual-panel p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .visual-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 5px 8px;
+      border: 1px solid #e6e8ef;
+      border-radius: 999px;
+      color: #343640;
+      background: #fafafa;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .section-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin: 0 auto;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--cyan), var(--pink));
+      color: #fff;
+    }
+
+    .section-head h2 {
+      margin-bottom: 0;
+      font-size: clamp(25px, 4.8vw, 40px);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, .72);
+      font-size: 15px;
+    }
+
+    .card,
+    .panel {
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .recommend-card {
+      padding: clamp(18px, 3vw, 30px);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-grid li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 56px;
+      padding: 14px;
+      border: 1px solid #eceef4;
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+      color: #262832;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .check {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      border-radius: 999px;
+      background: #111;
+      color: var(--cyan);
+      flex: 0 0 auto;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      position: relative;
+      min-height: 260px;
+      padding: 0 0 22px;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -36px;
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(0, 242, 234, .22), rgba(255, 0, 80, .20));
+    }
+
+    .card-number {
+      margin: 20px 22px 14px;
+      color: var(--pink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .feature-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eceef4;
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin: -23px 22px 18px;
+      border-radius: var(--radius);
+      background: #111;
+      color: var(--cyan);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+    }
+
+    .feature-card h3,
+    .benefit-card h3 {
+      position: relative;
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .feature-card h3,
+    .feature-card p {
+      padding-right: 22px;
+      padding-left: 22px;
+    }
+
+    .feature-card p,
+    .benefit-card p,
+    .venue-card p,
+    .price-card p,
+    .note-list li {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .flow-panel {
+      padding: clamp(18px, 3.4vw, 34px);
+    }
+
+    .steps {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 14px;
+      padding: 0 0 22px;
+    }
+
+    .steps li:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 46px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--cyan), rgba(255, 0, 80, .25));
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: -3px 0 0 var(--cyan), 3px 0 0 var(--pink);
+    }
+
+    .step-body {
+      min-width: 0;
+      padding-top: 8px;
+      color: #20222b;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .flow-note {
+      margin: 0;
+      padding: 15px 16px;
+      border-radius: var(--radius);
+      background: #f3fbfb;
+      color: #20252e;
+      font-weight: 800;
+    }
+
+    .benefit-panel {
+      padding: clamp(18px, 3.4vw, 32px);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .benefit-card {
+      padding: 18px;
+      border: 1px solid #eceef4;
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .benefit-index {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--cyan), var(--pink));
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .96fr) minmax(300px, 1.04fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .venue-card,
+    .price-card {
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .venue-card h3,
+    .price-card h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+      color: #22242c;
+      font-weight: 800;
+    }
+
+    .mini-icon {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: #111;
+      color: var(--cyan);
+      flex: 0 0 auto;
+    }
+
+    .venue-visual {
+      position: relative;
+      min-height: 340px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .venue-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .price-card {
+      text-align: center;
+    }
+
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 6px 0 14px;
+      color: #111;
+      font-weight: 900;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .price strong {
+      font-size: clamp(42px, 9vw, 68px);
+      line-height: 1;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 242, 234, .12);
+    }
+
+    .notes {
+      padding-bottom: 22px;
+    }
+
+    .note-list {
+      margin: 0;
+      padding: clamp(18px, 3vw, 28px);
+      list-style: none;
+    }
+
+    .note-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .note-list li + li {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eceef4;
+    }
+
+    .note-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--pink);
+    }
+
+    .final {
+      padding: 38px 0 68px;
+    }
+
+    .final-panel {
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(0, 242, 234, .12), transparent 42%),
+        linear-gradient(315deg, rgba(255, 0, 80, .13), transparent 42%),
+        #111116;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .final-panel h2 {
+      margin-bottom: 14px;
+      font-size: clamp(27px, 5.4vw, 46px);
+      line-height: 1.25;
+    }
+
+    .final-panel p {
+      max-width: 620px;
+      margin: 0 auto 22px;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      max-width: 100%;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: #fff;
+      color: #111;
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: -5px 0 0 var(--cyan), 5px 0 0 var(--pink), 0 18px 46px rgba(0, 0, 0, .28);
+    }
+
+    .footer {
+      padding: 30px 0 38px;
+      border-top: 1px solid var(--line);
+      color: rgba(255, 255, 255, .62);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 860px) {
+      .container {
+        width: min(100% - 28px, 680px);
+      }
+
+      .nav-note {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+
+      .hero-grid,
+      .venue-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .visual-panel {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .check-grid,
+      .card-grid,
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        line-height: 1.7;
+      }
+
+      .brand-text {
+        max-width: 210px;
+      }
+
+      .hero-visual {
+        min-height: auto;
+        padding: 14px;
+      }
+
+      .hero-photo {
+        min-height: 310px;
+        aspect-ratio: 1 / 1;
+      }
+
+      .visual-panel {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 14px;
+      }
+
+      .check-grid li {
+        min-height: auto;
+      }
+
+      .steps li {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .steps li:not(:last-child)::before {
+        left: 20px;
+        top: 42px;
+      }
+
+      .step-num {
+        width: 40px;
+        height: 40px;
+      }
+
+      .step-body {
+        padding-top: 5px;
+        font-size: 15px;
+      }
+
+      .venue-visual {
+        min-height: 280px;
+      }
+
+      .venue-photo {
+        min-height: 280px;
+      }
+
+      .cta-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">TikTok Shop LIVE Seminar</span>
+        </a>
+        <span class="nav-note">少人数制・見学・声のみ体験</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">LINE登録者向け 実践セミナー</p>
+            <h1>TikTok Shop LIVEを<br><span class="accent">実際に見て・体験できる</span><br>少人数制セミナー</h1>
+            <p class="lead">ロードマップを読んだけど、実際のLIVE配信がどんな感じか見てみたい。自分にもできるか不安。そんな方向けに、LIVE配信の流れを会場で見ながら学べる実践セミナーです。</p>
+            <p class="hero-safe">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              顔出し不要・声のみでの体験も可能です。
+            </p>
+            <div class="line-guide" role="note">
+              <strong>参加希望の方は、LINEメニューの「開催日程」から受付中の日程をご確認ください。</strong>
+              <span>このページはセミナー内容を知るための詳細ページです。日程案内と受付はLINE側でご案内します。</span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="TikTok Shop LIVEセミナーのイメージ">
+            <img class="hero-photo" src="assets/live-seminar-viewing.png" alt="商品が並ぶ会場でTikTok Shop LIVEの配信見学をする少人数セミナーの様子">
+            <div class="visual-panel">
+              <h2>見るだけでも、声だけ体験でも。</h2>
+              <p>会場で実際の流れを見ながら、商品紹介、コメント対応、購入案内まで具体的にイメージできます。</p>
+              <div class="visual-tags">
+                <span class="tag">少人数制</span>
+                <span class="tag">初心者向け</span>
+                <span class="tag">顔出し不要</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <h2>こんな方におすすめです</h2>
+          </div>
+          <div class="card recommend-card">
+            <ul class="check-grid">
+              <li><span class="check">✓</span><span>TikTok Shop LIVEに興味はあるけど、まだ不安がある</span></li>
+              <li><span class="check">✓</span><span>実際のLIVE配信の流れを見てみたい</span></li>
+              <li><span class="check">✓</span><span>商品紹介で何を話せばいいか知りたい</span></li>
+              <li><span class="check">✓</span><span>自分に合う商品ジャンルを相談したい</span></li>
+              <li><span class="check">✓</span><span>顔出しなしで体験できる場所がほしい</span></li>
+              <li><span class="check">✓</span><span>いきなり本番配信する前に練習したい</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="m17 5-5-3-5 3"></path><path d="m17 19-5 3-5-3"></path><path d="M2 12h20"></path></svg></span>
+            <h2>セミナーでできること</h2>
+          </div>
+          <div class="card-grid">
+            <article class="card feature-card">
+              <img class="feature-photo" src="assets/live-product-demo.png" alt="スマートフォンで商品紹介LIVEを配信する手元の様子">
+              <div class="card-number">01</div>
+              <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 8s4-4 10-4 10 4 10 4v10s-4 2-10 2-10-2-10-2Z"></path><path d="m10 9 5 3-5 3Z"></path></svg></div>
+              <h3>実際のLIVE配信を見学できる</h3>
+              <p>商品紹介・コメント対応・購入案内の流れをその場で確認できます。ただ説明を聞くだけではなく、実際の配信イメージを見ながら理解できます。</p>
+            </article>
+            <article class="card feature-card">
+              <img class="feature-photo" src="assets/product-consultation.png" alt="商品サンプルを見ながら自分に合うジャンルを相談する様子">
+              <div class="card-number">02</div>
+              <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg></div>
+              <h3>自分に合う商品を相談できる</h3>
+              <p>美容・日用品・雑貨など、初心者でも取り組みやすい商品ジャンルを一緒に整理できます。「何を扱えばいいかわからない」という不安を相談できます。</p>
+            </article>
+            <article class="card feature-card">
+              <img class="feature-photo" src="assets/voice-live-practice.png" alt="マイクとスマートフォンを使った声のみLIVE体験の配信環境">
+              <div class="card-number">03</div>
+              <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></div>
+              <h3>顔出し不要でLIVE体験できる</h3>
+              <p>声だけでも体験可能です。本番前の練習場所として、配信の雰囲気や話す流れを体験できます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg></span>
+            <h2>当日の流れ</h2>
+          </div>
+          <div class="panel flow-panel">
+            <ol class="steps">
+              <li><span class="step-num">1</span><span class="step-body">TikTok Shop LIVEの全体像を確認</span></li>
+              <li><span class="step-num">2</span><span class="step-body">実際のLIVE配信の流れを見学</span></li>
+              <li><span class="step-num">3</span><span class="step-body">商品紹介トークのポイント解説</span></li>
+              <li><span class="step-num">4</span><span class="step-body">コメント対応の見方を解説</span></li>
+              <li><span class="step-num">5</span><span class="step-body">希望者は声のみでLIVE体験</span></li>
+              <li><span class="step-num">6</span><span class="step-body">商品ジャンルや始め方の個別相談</span></li>
+            </ol>
+            <p class="flow-note">見るだけでもOK。体験したい方は、顔出しなし・声のみで参加できます。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"></path><path d="m3 17 9 5 9-5"></path><path d="m3 12 9 5 9-5"></path></svg></span>
+            <h2>参加するメリット</h2>
+          </div>
+          <div class="panel benefit-panel">
+            <div class="benefit-grid">
+              <article class="benefit-card">
+                <span class="benefit-index">1</span>
+                <h3>その場で質問できる</h3>
+                <p>自分に合う商品ジャンルや、始め方の不安を直接相談できます。</p>
+              </article>
+              <article class="benefit-card">
+                <span class="benefit-index">2</span>
+                <h3>実際のLIVE風景を見られる</h3>
+                <p>トークの流れ、商品の見せ方、コメント対応を参考にできます。</p>
+              </article>
+              <article class="benefit-card">
+                <span class="benefit-index">3</span>
+                <h3>本番前に体験できる</h3>
+                <p>顔出し不要・声のみでも体験できるため、練習場所として活用できます。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <h2>会場でリアルに学べる</h2>
+            <p>実際のLIVE配信を見ながら、学びと体験ができる会場です。</p>
+          </div>
+          <div class="venue-grid">
+            <div class="card venue-card">
+              <h3>東京都千代田区六番町2-19 5階</h3>
+              <p>市ヶ谷駅 徒歩5分。少人数で質問しやすく、初めての方でも落ち着いて参加できる会場です。</p>
+              <ul class="info-list">
+                <li><span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span><span>住所：東京都千代田区六番町2-19 5階</span></li>
+                <li><span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 22h18"></path><path d="M6 18V7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v11"></path><path d="M8 10h8"></path><path d="M8 14h8"></path></svg></span><span>アクセス：市ヶ谷駅 徒歩5分</span></li>
+                <li><span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-8 0v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><span>会場参加型・少人数制</span></li>
+                <li><span class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m10 9 5 3-5 3Z"></path><rect x="3" y="5" width="18" height="14" rx="2"></rect></svg></span><span>LIVE見学・体験</span></li>
+              </ul>
+            </div>
+            <div class="venue-visual">
+              <img class="venue-photo" src="assets/seminar-venue.png" alt="スマートフォン三脚とリングライトが設置された少人数制セミナー会場">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="card price-card">
+            <p class="eyebrow" style="color:#24262f;background:#f7f8fb;border-color:#eceef4;margin-left:auto;margin-right:auto;">参加費の案内</p>
+            <h2>初回限定価格でご案内</h2>
+            <p>少人数制の実践セミナーを、初回限定価格でご案内しています。</p>
+            <div class="price"><small>初回限定</small><strong>1,980円</strong></div>
+            <p>日程ごとに定員があります。受付中の日程はLINEメニューの「開催日程」からご確認ください。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+            <h2>初めてでも安心して参加できます</h2>
+          </div>
+          <div class="badges" aria-label="安心して参加できるポイント">
+            <span class="badge">見るだけの参加もOK</span>
+            <span class="badge">顔出し不要</span>
+            <span class="badge">声のみ体験OK</span>
+            <span class="badge">初心者向け</span>
+            <span class="badge">少人数制</span>
+            <span class="badge">質問しやすい環境</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="notes">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10.3 3.4 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.4a2 2 0 0 0-3.4 0Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></span>
+            <h2>ご参加前にご確認ください</h2>
+          </div>
+          <ul class="card note-list">
+            <li>本セミナーは成果を保証するものではありません。</li>
+            <li>内容は予告なく変更となる場合があります。</li>
+            <li>少人数制のため、定員に達した日程は受付終了となります。</li>
+            <li>当日の詳細は、購入後にLINEまたはメールでご案内します。</li>
+            <li>購入後のキャンセル・返金については、BASE商品ページの記載をご確認ください。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="container">
+          <div class="final-panel">
+            <h2>実際のLIVE配信を見て<br>自分にもできそうか確かめてみませんか？</h2>
+            <p>参加希望の方は、LINEメニューの「開催日程」から受付中の日程をご確認ください。</p>
+            <a class="cta-button" href="#" aria-label="LINEで開催日程を確認する">LINEで開催日程を確認する</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <small>&copy; TikTok Shop LIVE Seminar</small>
+        <nav class="footer-links" aria-label="フッターリンク">
+          <a href="./">トップページ</a>
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="law.html">特定商取引法に基づく表記</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
